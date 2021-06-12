@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="table-responsive-lg">
+<table class="table table-info" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Почта</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Коментарий</th>
+      <th scope="col">Статус заявки</th>
+        <th scope="col">Отметить</th>
+        <th scope="col">Удалить</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in requeste %}
+  {% if i.status_requeste %}
+    <tr class="table-success">
+        {% else %}
+    <tr class="table-warning">
+      {% endif %}
+    <th id="reqID"> {{ i.id }}</th>
+    <th> {{ i.email }}</th>
+    <th> {{ i.p_number }}</th>
+    <th> {{ i.comment }}</th>
+    <th> {% if i.status_requeste%} Обработанна {% else %} Необработанна {% endif %} </th>
+    {% if i.status_requeste %}
+        <th> <button disabled type="button" class="btn btn-outline-primary btn-sm" id="rowBtnTrue" onclick="changeStatus(this);" >Неактивно</button></th>
+    {% else %}
+        <th> <button  type="button" class="btn btn-outline-primary btn-sm" id="rowBtn" onclick="changeStatus(this);">Закрыть</button></th>
+    {% endif %}
+      <th> <button  type="button" class="btn btn-outline-primary btn-sm" id="delBtn" onclick="deleteRequeste(this);">Удалить</button></th>
+
+</tr>
+{% endfor %}
+  </tbody>
+</table>
+</div>
+<script src="{% static 'table_list_requeste.js' %}"></script>
+{% endblock %}

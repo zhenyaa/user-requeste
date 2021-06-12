@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card" style="width: '30%';">
+
+  <form id="formUserRequeste" onsubmit="event.preventDefault(); deshabilitarBoton()">{% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail" class="form-label">Email адрес</label>
+      <input type="email" name="email" class="form-control" id="exampleInputEmail" placeholder="example@ex.com" aria-describedby="emailHelp">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPhone" class="form-label">Номер телефона</label>
+      <input type="tel" name="p_number" class="form-control" id="exampleInputPhone" placeholder="0500010101" aria-describedby="phoneHelp">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputComment" class="form-label">Комментарий</label>
+      <textarea rows="10" cols="85"  name="comment" id="exampleInputComment" placeholder="Комментарий" aria-describedby="commentHelp"></textarea>
+    </div>
+
+    <button type="submit"  class="btn btn-primary">Отправить</button>
+    <span class="badge bg-danger" id="subBad" style="display:none;">Заявка добавлена</span>
+  </form>
+</div>
+<script src="{% static 'app.js' %}"></script>
+{% endblock %}
