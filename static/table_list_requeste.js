@@ -27,9 +27,7 @@ function changeStatus(e){
     console.log(data)
     window.location.reload(true); 
     location.reload()
-    // form.reset()
-    // $('#subBad').show()
-    // setTimeout(function(){ $("#subBad").hide()},5000);
+   
   }
 });
 }
@@ -48,10 +46,9 @@ let cookie = document.cookie
   contentType: "application/json",
   dataType: "json",
   success: function(data){
-    console.log(data)
-    // window.location.reload(true); 
-    location.reload()
+    // location.reload()
       alert("Was deleted")
+    $(e).closest('tr').remove()
   }
 });
 
